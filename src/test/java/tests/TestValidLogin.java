@@ -8,11 +8,14 @@ import page.LoginPage;
 
 public class TestValidLogin extends BaseTest {
 
-//    @Parameters({"correctUserName", "correctPassword"})
-    @Test
-    public void testLogin(){
+    /**
+     * Assert card price matches the shopping cart subtotal value
+     */
+    @Parameters({"correctUserName", "correctPassword"})
+    @Test(description = "Should login with valid credentials")
+    public void testLogin(String correctUserName, String correctPassword){
         LoginPage loginPage = new LoginPage();
-        loginPage.login("upstream","Asd123!.");
+        loginPage.login(correctUserName,correctPassword);
     }
 
 }

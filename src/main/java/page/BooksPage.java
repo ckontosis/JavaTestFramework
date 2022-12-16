@@ -2,6 +2,7 @@ package page;
 
 import base.BasePage;
 import base.DriverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,17 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BooksPage extends BasePage {
 
     WebDriver driver;
-
-    WebDriverWait wait;
-
     private final String PAGE_URL="https://demoqa.com/books";
 
-    // Web Elements of the page
-    @FindBy(css="button#login")
-    private WebElement loginButton;
+    // By locators of the  Elements
+    By loginButton = By.cssSelector("button#login");
+    By username = By.cssSelector("label#userName-value");
 
-    @FindBy(css="label#userName-value")
-    private WebElement username;
 
     // Constructor
     public BooksPage() {
@@ -29,7 +25,7 @@ public class BooksPage extends BasePage {
 
 
     public void clickLoginButton() {
-        loginButton.click();
+        click(loginButton);
     }
 
     public Boolean amOnPage() {

@@ -2,6 +2,7 @@ package page;
 
 import base.BasePage;
 import base.DriverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,14 +12,13 @@ public class ProfilePage extends BasePage {
 
     WebDriver driver;
 
-    WebDriverWait wait;
-
     private final String PAGE_URL="https://demoqa.com/profile";
 
-    @FindBy(xpath = "//button[text()='Log out']")
-    private WebElement logoutButton;
+    By logoutButton = By.xpath("//button[text()='Log out']");
+    By username = By.cssSelector("label#userName-value");
 
-    @FindBy(css="label#userName-value")
-    private WebElement username;
+    public ProfilePage() {
+        driver = DriverFactory.getWebDriver();
+    }
 
 }
