@@ -16,7 +16,7 @@
 
 ### To run your tests
 
-- To run Suite with Chrome, run `mvn clean test"`
+- To run Suite with Chrome, run `mvn clean test`
 - To run Suite with Firefox, run `mvn clean test -Dbrowser="firefox"`
 - To run Suite with Edge, run `mvn clean test -Dbrowser="edge"`
 
