@@ -1,24 +1,40 @@
 package page;
 
 import base.BasePage;
-import base.DriverFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Page object model for the /profile Page
+ */
 public class ProfilePage extends BasePage {
-
-    WebDriver driver;
 
     private final String PAGE_URL="https://demoqa.com/profile";
 
-    By logoutButton = By.xpath("//button[text()='Log out']");
-    By username = By.cssSelector("label#userName-value");
+    // Locators for the elements
+    private final By logoutButton = By.xpath("//button[text()='Log out']");
+    private final By username = By.cssSelector("label#userName-value");
 
-    public ProfilePage() {
-        driver = DriverFactory.getWebDriver();
+    /**
+     * @return Returns the text of the username element as String
+     */
+    public String getUsername() {
+        return getText(username);
     }
 
+    /**
+     * Clicks the logout button
+     */
+    public void logout() {
+        waitForElement(logoutButton);
+        moveToElement(logoutButton);
+        click(logoutButton);
+    }
+
+    /**
+     * @return Returns the url of the page as String
+     */
+    @Override
+    public String getUrl() {
+        return PAGE_URL;
+    }
 }

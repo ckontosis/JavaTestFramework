@@ -5,20 +5,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
+/**
+ * Test parent class where we set logic we want to use across Test cases
+ * Creating a class for each separate test case is encouraged
+ */
 public class BaseTest {
 
     WebDriver driver;
-    WebDriverWait wait;
 
+    /**
+     * Before class set up method
+     * Includes logic to be executed before each test
+     * @param hostUrl set at testng.xml test parameter
+     */
+    @Parameters({"hostUrl"})
     @BeforeClass
-    public void setUp() {
+    public void setUp(String hostUrl) {
 
+        // Set chrome as default driver
         String browser = System.getProperty("browser", "chrome");
 
+        // Select webdriver by browser system property
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
@@ -30,13 +41,23 @@ public class BaseTest {
             driver = new EdgeDriver();
         }
 
-        driver.get("https://demoqa.com/login");
+        // Go to hostUrl page
+        driver.get(hostUrl);
+        // Maximize window to reduce flakiness
         driver.manage().window().maximize();
+        // Pass driver to DriverFactory to delegate responsibility
         DriverFactory.setWebDriver(driver);
     }
 
+    /**
+     * After class tear down method
+     * Includes logic to be executed after each test
+     */
     @AfterClass
     public void tearDown() {
+        // Clear cookies
+        DriverFactory.getWebDriver().manage().deleteAllCookies();
+        // Quit driver
         DriverFactory.getWebDriver().quit();
     }
 
