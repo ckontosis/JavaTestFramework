@@ -2,7 +2,6 @@ package base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -96,7 +95,7 @@ public abstract class BasePage {
     }
 
     /**
-     * Hides element
+     * Adds hidden value to element
      * @param locator expects Selenium By locator for element to hide
      */
     protected void hideElement(By locator) {

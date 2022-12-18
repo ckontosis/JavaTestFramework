@@ -57,7 +57,8 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * @return Returns existence of error element as Boolean
+     * Checks visibility of error
+     * @return existence of error element as Boolean
      */
     public Boolean isErrorVisible() {
         waitForElement(errorText);
@@ -66,14 +67,15 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * @return Returns the text of the error as String
+     *
+     * @return the text of the error as String
      */
     public String GetErrorText() {
         return getText(errorText);
     }
 
     /**
-     * @return Returns the url of the page as String
+     * @return the url of the page as String
      */
     @Override
     public String getUrl() {

@@ -31,7 +31,7 @@ public class ProfilePage extends BasePage {
     }
 
     /**
-     * @return Returns the url of the page as String
+     * @return the url of the page as String
      */
     @Override
     public String getUrl() {
